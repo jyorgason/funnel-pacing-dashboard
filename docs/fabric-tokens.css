@@ -1,0 +1,302 @@
+/* =========================================================
+   BambooHR Fabric — Encore theme tokens
+   Source: fabric/src/definitions/json/encore-*.json
+   ========================================================= */
+
+/* ---- Webfonts ----
+   Fields: bundled locally in /fonts (official BambooHR display serif)
+   Inter:  loaded from Google Fonts (open source, identical to BambooHR's copy)
+*/
+@font-face {
+  font-family: 'Fields';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url('fonts/Fields-Regular.woff2') format('woff2'),
+       url('fonts/Fields-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Fields';
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  src: url('fonts/Fields-SemiBold.woff2') format('woff2'),
+       url('fonts/Fields-SemiBold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Fields';
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url('fonts/Fields-Bold.woff2') format('woff2'),
+       url('fonts/Fields-Bold.ttf') format('truetype');
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Code+Pro:wght@500;600&display=swap');
+
+:root {
+  /* ---------- TYPOGRAPHY ---------- */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Fields', Georgia, 'Times New Roman', serif;
+  --font-mono: 'Source Code Pro', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+
+  /* Headline sizes (encore-text.json) */
+  --h1-size: 42px;  --h1-line: 52px;
+  --h2-size: 32px;  --h2-line: 38px;
+  --h3-size: 24px;  --h3-line: 30px;
+  --h4-size: 21px;  --h4-line: 26px;
+  --h5-size: 18px;  --h5-line: 24px;
+  --h6-size: 18px;  --h6-line: 24px;
+
+  /* Body sizes */
+  --text-biggie-size: 16px; --text-biggie-line: 24px;
+  --text-large-size:  16px; --text-large-line:  24px;
+  --text-medium-size: 15px; --text-medium-line: 22px;
+  --text-small-size:  14px; --text-small-line:  20px;
+  --text-teenie-size: 13px; --text-teenie-line: 19px;
+  --text-xsmall-size: 13px; --text-xsmall-line: 19px;
+
+  /* Weights */
+  --w-regular: 400;
+  --w-medium: 500;
+  --w-semibold: 600;
+  --w-bold: 700;
+  --w-heavy: 700;
+
+  /* ---------- COLOR: PRIMITIVES ---------- */
+  /* Brand */
+  --brand-color: #599D15;          /* BambooHR signature green */
+  --link: #0b4fd1;
+  --action: #fcc400;               /* bright yellow — primary CTA highlight */
+
+  /* Neutrals (warm gray scale) */
+  --white: #ffffff;
+  --gray-05: #f6f6f4;
+  --gray-1:  #f5f4f1;
+  --gray-2:  #e4e3e0;
+  --gray-3:  #d4d2d0;
+  --gray-4:  #c6c2bf;
+  --gray-5:  #868180;
+  --gray-6:  #777270;
+  --gray-7:  #676260;
+  --gray-8:  #48413f;
+  --gray-9:  #38312f;
+  --gray-10: #38312f;
+
+  /* Sentiment */
+  --info: #007db4;         --info-dark: #00618b;         --info-light: #e6f5fe;
+  --success: #028a01;      --success-dark: #016d00;      --success-light: #e8fde8;
+  --warning: #cd4a00;      --warning-dark: #a14300;      --warning-light: #fff1e5;
+  --attention: #cd4a00;    --attention-dark: #9e4d00;    --attention-light: #fff1e5;
+  --error: #de1429;        --error-dark: #ae0718;        --error-light: #fdeaec;
+  --danger: #de1429;       --danger-dark: #ae0718;       --danger-light: #fdeaec;
+  --discovery: #9853b9;    --discovery-dark: #683180;    --discovery-light: #f9edff;
+  --notice-dark: #fcc400;
+
+  /* Sentiment -500 aliases (mirror the primary -500 scale convention) */
+  --info-500: var(--info);       --info-100: var(--info-light);
+  --success-500: var(--success); --success-100: var(--success-light);
+  --warning-500: var(--warning); --warning-100: var(--warning-light);
+  --error-500: var(--error);     --error-100: var(--error-light);
+  --discovery-500: var(--discovery); --discovery-100: var(--discovery-light);
+
+  /* Accent palette (for illustrations, badges, data viz) */
+  --accent-sapphire: #0b4fd1;
+  --accent-candy-red: #de1429;
+  --accent-cayenne-red: #af361d;
+  --accent-burnt-orange: #cd4a00;
+  --accent-pine-green: #2e7918;
+  --accent-cerulean: #1a6eb5;
+  --accent-lilac: #9853b9;
+  --accent-poppy-yellow: #fcc400;
+  --accent-leaf-green: #759e00;
+  --accent-carmine-pink: #e8454d;
+  --accent-pumpkin: #f96422;
+  --accent-cornflower: #6f90e8;
+  --accent-bashful-pink: #d05489;
+  --accent-clover: #3aa837;
+  --accent-dark-gold: #976e00;
+  --accent-persian-green: #0fa698;
+  --accent-lavender: #9a6dc8;
+  --accent-water-blue: #1b8ab4;
+  --accent-cyan: #2076bb;
+  --accent-warm-purple: #794293;
+  --accent-cardinal: #c32a2f;
+  --accent-ruddy-brown: #ba5600;
+  --accent-pea-green: #97be32;
+  --accent-dull-yellow: #e1e246;
+  --accent-soft-blue: #6696db;
+  --accent-blush-pink: #d7aede;
+  --accent-salmon: #f3977a;
+
+  /* ---------- SEMANTIC (default "lime1" primary theme, per Encore)
+     Encore's primary scale: 100 (lightest) → 300 (light) → 500 (base/brand) → 900 (dark)
+     Base brand color is primary-500 = #2E7918.
+  */
+  --primary-100: #EBF5E8;   /* lightest tint */
+  --primary-300: #87C276;   /* light */
+  --primary-500: #2E7918;   /* base / BambooHR brand green — surface-primary-strong */
+  --primary-900: #215C10;   /* dark — surface-primary-x-strong (hover / active) */
+  --primary-1000: #163D0A;  /* reserved, lime2-900 */
+
+  /* Alt lime2 scale (deeper variant) */
+  --primary-lime2-100: #EBF5E8;
+  --primary-lime2-300: #5FAD48;
+  --primary-lime2-500: #215C10;
+  --primary-lime2-900: #163D0A;
+
+  /* Text */
+  --fg-x-weak: var(--gray-5);
+  --fg-weak: var(--gray-6);
+  --fg-medium: var(--gray-7);
+  --fg-strong: var(--gray-8);
+  --fg-x-strong: var(--gray-9);
+  --fg-inverted: var(--white);
+  --fg-link: var(--link);
+  --fg-link-hover: var(--primary-500);
+
+  /* Surfaces — Encore construct tokens */
+  --surface-neutral-xx-weak: var(--gray-05);
+  --surface-neutral-x-weak:  var(--gray-1);
+  --surface-neutral-weak:    var(--gray-2);
+  --surface-neutral-medium:  var(--gray-4);
+  --surface-neutral-strong:  var(--gray-6);
+  --surface-neutral-x-strong: var(--gray-8);
+  --surface-neutral-xx-strong: var(--gray-9);
+  --surface-neutral-inverted: var(--white);
+  --surface-neutral-forced-white: var(--white);
+
+  --surface-primary-weak:    var(--primary-100);
+  --surface-primary-medium:  var(--primary-300);
+  --surface-primary-strong:  var(--primary-500);
+  --surface-primary-x-strong: var(--primary-900);
+
+  /* Legacy aliases (kept so older files still resolve) */
+  --surface-xx-weak: var(--surface-neutral-xx-weak);
+  --surface-x-weak:  var(--surface-neutral-x-weak);
+  --surface-weak:    var(--surface-neutral-weak);
+  --surface-medium:  var(--surface-neutral-medium);
+  --surface-inverted: var(--surface-neutral-inverted);
+
+  /* Borders — Encore construct tokens */
+  --border-neutral-xx-weak: var(--gray-1);
+  --border-neutral-x-weak:  var(--gray-2);
+  --border-neutral-weak:    var(--gray-3);
+  --border-neutral-medium:  var(--gray-4);
+  --border-neutral-strong:  var(--gray-5);
+  --border-neutral-x-strong: var(--gray-7);
+
+  --border-primary-weak:    var(--primary-100);
+  --border-primary-medium:  var(--primary-300);
+  --border-primary-strong:  var(--primary-500);
+  --border-primary-x-strong: var(--primary-900);
+
+  /* Legacy aliases */
+  --border-xx-weak: var(--border-neutral-xx-weak);
+  --border-x-weak:  var(--border-neutral-x-weak);
+  --border-weak:    var(--border-neutral-weak);
+  --border-medium:  var(--border-neutral-medium);
+  --border-strong:  var(--border-neutral-strong);
+
+  /* Text — Encore construct tokens */
+  --text-neutral-x-weak:   var(--gray-5);
+  --text-neutral-weak:     var(--gray-6);
+  --text-neutral-medium:   var(--gray-7);
+  --text-neutral-strong:   var(--gray-8);
+  --text-neutral-x-strong: var(--gray-9);
+  --text-neutral-inverted: var(--white);
+  --text-primary-strong:   var(--primary-500);
+  --text-link-idle:        var(--link);
+  --text-link-hover:       var(--primary-500);
+
+  /* Icon tokens mirror text tokens for neutrals; primary icon uses brand green */
+  --icon-neutral-x-weak:   var(--gray-3);
+  --icon-neutral-weak:     var(--gray-4);
+  --icon-neutral-medium:   var(--gray-5);
+  --icon-neutral-strong:   var(--gray-6);
+  --icon-neutral-x-strong: var(--gray-8);
+  --icon-neutral-xx-strong: var(--gray-9);
+  --icon-primary-strong:   var(--primary-500);
+  --icon-primary-x-strong: var(--primary-900);
+
+  /* ---------- RADII ---------- */
+  --radius-100: 4px;   /* xxxSmall */
+  --radius-200: 8px;   /* xxSmall */
+  --radius-300: 12px;  /* xSmall */
+  --radius-400: 16px;  /* small */
+  --radius-500: 20px;  /* medium */
+  --radius-600: 24px;  /* large */
+  --radius-700: 32px;  /* xLarge */
+  --radius-800: 48px;
+  --radius-900: 64px;
+  --radius-full: 1000px;
+
+  /* ---------- SPACING (8px grid) ---------- */
+  --sp-none: 0;
+  --sp-xxxs: 2px;
+  --sp-xxs:  4px;
+  --sp-xs:   8px;
+  --sp-s:   12px;
+  --sp-m:   16px;
+  --sp-l:   20px;
+  --sp-xl:  24px;
+  --sp-xxl: 32px;
+  --sp-xxxl: 40px;
+
+  /* ---------- SIZES (component heights) ---------- */
+  --size-biggie: 36px;
+  --size-large:  36px;
+  --size-medium: 34px;
+  --size-small:  32px;
+  --size-teenie: 32px;
+
+  /* ---------- SHADOWS (encore-shadows.json) ---------- */
+  --shadow-100: 1px 1px 0 1px rgba(0,0,0,0.04);
+  --shadow-300: 1px 1px 0 2px rgba(0,0,0,0.03);
+  --shadow-500: 2px 2px 0 2px rgba(0,0,0,0.05);
+  --shadow-700: 3px 3px 10px 2px rgba(0,0,0,0.10);
+
+  /* Button base shadow */
+  --shadow-button: 0 1px 0 0 rgba(0,0,0,0.05);
+
+  /* ---------- PAGE ---------- */
+  --page-min-width: 1124px;
+  --page-max-width: 1600px;
+  --page-capsule-padding-x: 32px;
+  --page-capsule-padding-y: 24px;
+}
+
+/* ---------- SEMANTIC ELEMENT STYLES ---------- */
+html, body {
+  font-family: var(--font-sans);
+  font-size: var(--text-medium-size);
+  line-height: var(--text-medium-line);
+  color: var(--fg-x-strong);
+  background: var(--white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, .h1 { font-family: var(--font-serif); font-size: var(--h1-size); line-height: var(--h1-line); font-weight: var(--w-bold);     margin: 0; letter-spacing: -0.01em; }
+h2, .h2 { font-family: var(--font-serif); font-size: var(--h2-size); line-height: var(--h2-line); font-weight: var(--w-semibold); margin: 0; letter-spacing: -0.005em; }
+h3, .h3 { font-family: var(--font-serif); font-size: var(--h3-size); line-height: var(--h3-line); font-weight: var(--w-semibold); margin: 0; }
+h4, .h4 { font-family: var(--font-serif); font-size: var(--h4-size); line-height: var(--h4-line); font-weight: var(--w-semibold); margin: 0; }
+h5, .h5 { font-family: var(--font-sans);  font-size: var(--h5-size); line-height: var(--h5-line); font-weight: var(--w-semibold); margin: 0; }
+h6, .h6 { font-family: var(--font-sans);  font-size: var(--h6-size); line-height: var(--h6-line); font-weight: var(--w-semibold); margin: 0; }
+
+.text-biggie { font-size: var(--text-biggie-size); line-height: var(--text-biggie-line); }
+.text-large  { font-size: var(--text-large-size);  line-height: var(--text-large-line); }
+.text-medium { font-size: var(--text-medium-size); line-height: var(--text-medium-line); }
+.text-small  { font-size: var(--text-small-size);  line-height: var(--text-small-line); }
+.text-teenie { font-size: var(--text-teenie-size); line-height: var(--text-teenie-line); }
+.text-xsmall { font-size: var(--text-xsmall-size); line-height: var(--text-xsmall-line); }
+
+p { margin: 0 0 var(--sp-m) 0; color: var(--fg-strong); }
+a { color: var(--fg-link); text-decoration: none; }
+a:hover { color: var(--fg-link-hover); text-decoration: underline; }
+
+code, pre, kbd, samp {
+  font-family: var(--font-mono);
+  font-weight: var(--w-semibold);
+  font-size: 0.92em;
+}
