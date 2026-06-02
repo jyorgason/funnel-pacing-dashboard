@@ -1,0 +1,7 @@
+Read README.md. This is a working HTML dashboard — I need you to connect live data. Wire data.js to our Databricks funnel metrics and build the Google Sheet override layer exactly as the README describes. Don't rebuild the UI.
+
+The "Data Source Context" file explains where to grab the data.
+
+Your part of the job here is to automate the data flow and accurately calculate the forecasting.
+
+Creating a briefing doc for your role in this project that is a living doc explaining what the project is doing and how for records

@@ -36,10 +36,11 @@ jobs:
 
       - name: Refresh data.js
         env:
-          DATABRICKS_HOST:      ${{ secrets.DATABRICKS_HOST }}
-          DATABRICKS_TOKEN:     ${{ secrets.DATABRICKS_TOKEN }}
-          DATABRICKS_HTTP_PATH: ${{ secrets.DATABRICKS_HTTP_PATH }}
-          GOOGLE_CREDS_JSON:    credentials.json
+          DATABRICKS_HOST:          ${{ secrets.DATABRICKS_HOST }}
+          DATABRICKS_HTTP_PATH:     ${{ secrets.DATABRICKS_HTTP_PATH }}
+          DATABRICKS_CLIENT_ID:     ${{ secrets.DATABRICKS_CLIENT_ID }}
+          DATABRICKS_CLIENT_SECRET: ${{ secrets.DATABRICKS_CLIENT_SECRET }}
+          GOOGLE_CREDS_JSON:        credentials.json
         run: python src/build_data_js.py --no-push
 
       - name: Commit and push if data changed

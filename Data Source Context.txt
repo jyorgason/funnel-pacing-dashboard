@@ -1,0 +1,38 @@
+Data Sources 
+
+Google Sheets:
+2026 Marketing Targets: https://docs.google.com/spreadsheets/d/1hivWayz53ql8qywV88hv3oygJJX-qqQNZHwnGTku9ks/edit?gid=1862990673#gid=1862990673
+- This sheet should be used for all targets in the report
+- Use rows 2&3 for Marketable Visits and Website CVR
+- Use the "MQL1 Targets by Subsegment" (rows 70-83) for MQL targets
+- Use the "SAO Targets by Subsegment" (rows 53-67) for MQL targets
+
+Databricks:
+Marketing Funnel: analytics_us_east_2_production_sandbox_mktg.jyorgason.marketing_funnel
+- Use this for current and historical funnel data (MQL, SAO)
+- Choose "First 90 Day" for the attribution model
+- To calculate "forecast", use pacing logic of 
+	- What business day of the month are we at
+	- What are we averaging (sum of metric / sum of business days)
+	- using that avg and remaining business days in month to calculate what we are pacing to
+	- ie, if there are 15 more business days and we are avg 3 SAOs a day, we'd expect 45 more SAOs plus what we are at currently for pacing/forecast
+
+Adobe Analytics & Gemini:
+- Marketable Visits and Website CVR actuals and historical have been pulled from Adobe Analytics
+- There is a Gemini Gem that uses exported Adobe Analytics data to forecast out through the rest of the month
+- When trying to automate this, Claude recommended:
+	Keep the Manual Adobe Export (Short Term)
+	Don't block the whole project on this. Structure the pipeline so Adobe is the one manual input while everything else is automated:
+	Manual step:    Export CSV from Adobe Analytics → drop in a watched folder
+	Automated:      Python picks up the CSV → sends to Gemini → merges with 
+                	Databricks data → builds report → saves to Drive
+	This gets you 90% automated immediately, and you can swap in the Adobe API connector later when auth is sorted.
+	your-project/
+	├── inputs/
+	│   └── adobe_export.csv    ← you drop this here manually each day
+	├── src/
+	│   ├── db_utils.py
+	│   ├── forecast_utils.py   ← reads CSV, sends to Gemini
+	│   └── report_builder.py
+- You will need to find the best route for this
+

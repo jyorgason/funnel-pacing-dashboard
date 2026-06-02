@@ -8,9 +8,12 @@ ADOBE_CSV_PATH = ROOT / "inputs" / "adobe_export.csv"
 
 # ─── Databricks ───────────────────────────────────────────────────────────────
 # Find these in your Databricks workspace → SQL Warehouses → Connection Details
-DB_HOST      = os.environ.get("DATABRICKS_HOST", "")        # e.g. adb-1234.azuredatabricks.net
-DB_TOKEN     = os.environ.get("DATABRICKS_TOKEN", "")       # personal access token
-DB_HTTP_PATH = os.environ.get("DATABRICKS_HTTP_PATH", "")   # /sql/1.0/warehouses/<id>
+DB_HOST          = os.environ.get("DATABRICKS_HOST", "")          # e.g. adb-1234.azuredatabricks.net
+DB_HTTP_PATH     = os.environ.get("DATABRICKS_HTTP_PATH", "")      # /sql/1.0/warehouses/<id>
+# Auth — use ONE of the two options below:
+DB_TOKEN         = os.environ.get("DATABRICKS_TOKEN", "")          # personal access token (local dev)
+DB_CLIENT_ID     = os.environ.get("DATABRICKS_CLIENT_ID", "")      # service principal (CI/automation)
+DB_CLIENT_SECRET = os.environ.get("DATABRICKS_CLIENT_SECRET", "")  # service principal secret
 DB_TABLE     = "analytics_us_east_2_production_sandbox_mktg.jyorgason.marketing_funnel"
 DB_ATTRIBUTION = "First 90 Days"
 

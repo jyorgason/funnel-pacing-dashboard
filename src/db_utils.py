@@ -21,6 +21,33 @@ import config
 
 
 def _conn():
+    """
+    Supports two auth methods — whichever env vars are present wins:
+
+    Personal access token (dev / local):
+        DATABRICKS_HOST, DATABRICKS_TOKEN, DATABRICKS_HTTP_PATH
+
+    Service principal / OAuth M2M (CI / GitHub Actions — preferred for production):
+        DATABRICKS_HOST, DATABRICKS_CLIENT_ID, DATABRICKS_CLIENT_SECRET, DATABRICKS_HTTP_PATH
+        Ask your Databricks admin to create a service principal and grant it
+        SELECT on analytics_us_east_2_production_sandbox_mktg.jyorgason.marketing_funnel.
+    """
+    if config.DB_CLIENT_ID and config.DB_CLIENT_SECRET:
+        from databricks.sdk.oauth import ClientCredentials
+        from databricks.sdk.config import Config as DatabricksConfig
+        credentials_provider = ClientCredentials(
+            client_id=config.DB_CLIENT_ID,
+            client_secret=config.DB_CLIENT_SECRET,
+            host=f"https://{config.DB_HOST}",
+            scopes=["sql", "offline_access"],
+        )
+        return dbsql.connect(
+            server_hostname=config.DB_HOST,
+            http_path=config.DB_HTTP_PATH,
+            credentials_provider=credentials_provider,
+        )
+
+    # Fall back to personal access token
     return dbsql.connect(
         server_hostname=config.DB_HOST,
         http_path=config.DB_HTTP_PATH,
