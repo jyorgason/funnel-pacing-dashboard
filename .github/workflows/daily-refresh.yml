@@ -1,0 +1,53 @@
+name: Daily Dashboard Refresh
+
+on:
+  schedule:
+    # 8 AM Mountain time (UTC-6 MST / UTC-7 MDT)
+    # Runs Mon–Fri so the dashboard is fresh each workday morning.
+    - cron: '0 14 * * 1-5'
+
+  # "Run workflow" button in the GitHub Actions UI — useful for on-demand refreshes
+  workflow_dispatch:
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write   # needed to commit + push data.js back to the repo
+
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Write Google credentials from secret
+        # GOOGLE_CREDS_JSON secret should be the base64-encoded contents of credentials.json
+        # Encode it on your Mac with:  base64 < credentials.json | pbcopy
+        run: echo "${{ secrets.GOOGLE_CREDS_JSON }}" | base64 --decode > credentials.json
+
+      - name: Refresh data.js
+        env:
+          DATABRICKS_HOST:      ${{ secrets.DATABRICKS_HOST }}
+          DATABRICKS_TOKEN:     ${{ secrets.DATABRICKS_TOKEN }}
+          DATABRICKS_HTTP_PATH: ${{ secrets.DATABRICKS_HTTP_PATH }}
+          GOOGLE_CREDS_JSON:    credentials.json
+        run: python src/build_data_js.py --no-push
+
+      - name: Commit and push if data changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/data.js
+          git diff --staged --quiet && echo "No changes to data.js — skipping commit." || (
+            git commit -m "data: daily refresh $(date -u '+%Y-%m-%d')" &&
+            git push
+          )
