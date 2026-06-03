@@ -1,7 +1,7 @@
 Data Sources 
 
 Google Sheets:
-2026 Marketing Targets: https://docs.google.com/spreadsheets/d/1hivWayz53ql8qywV88hv3oygJJX-qqQNZHwnGTku9ks/edit?gid=1862990673#gid=1862990673
+2026 Marketing Targets: https://docs.google.com/spreadsheets/d/1X-q02c5uFH6OvrGt6mdYljcCctO20mkUoEw5WT1n5nw/edit?gid=1862990673#gid=1862990673
 - This sheet should be used for all targets in the report
 - Use rows 2&3 for Marketable Visits and Website CVR
 - Use the "MQL1 Targets by Subsegment" (rows 70-83) for MQL targets
