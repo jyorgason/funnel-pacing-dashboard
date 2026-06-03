@@ -91,11 +91,11 @@ window.REPORT = {
     },
     {
       key: "mql", label: "Total MQLs", kind: "count", role: "volume",
-      target: 8450, forecast: 7425, mom: 2.3, yoy: 6.7,
+      target: 7656, forecast: 7425, mom: 2.3, yoy: 6.7,
       overridden: false,
       children: [
-        { key: "mql_ta",    label: "TA MQL",    kind: "count", target: 4095, forecast: 3960, mom: 5.1,  yoy: 9.7,  overridden: false },
-        { key: "mql_micro", label: "Micro MQL", kind: "count", target: 4355, forecast: 3025, mom: -3.1, yoy: 5.5,  overridden: false },
+        { key: "mql_ta",    label: "TA MQL",    kind: "count", target: 3694, forecast: 3960, mom: 5.1,  yoy: 9.7,  overridden: false },
+        { key: "mql_micro", label: "Micro MQL", kind: "count", target: 3962, forecast: 3025, mom: -3.1, yoy: 5.5,  overridden: false },
       ],
     },
     {
