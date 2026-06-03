@@ -66,7 +66,7 @@
 window.REPORT = {
   period: "June 2026",
   // date-derived pacing context for the "Day X of Y" chip
-  dayOfMonth: 2,
+  dayOfMonth: 3,
   daysInMonth: 30,
 
   // Funnel order = top → bottom. `kind` drives formatting:
@@ -81,35 +81,35 @@ window.REPORT = {
   metrics: [
     {
       key: "visits", label: "Marketable Visits", kind: "count", role: "volume",
-      target: 386083, forecast: 378733, mom: 9.1, yoy: -14,
+      target: 378943, forecast: 579960, mom: 9.1, yoy: -14,
       overridden: false,
     },
     {
       key: "cvr", label: "Website CVR", kind: "rate", role: "conversion",
-      target: 2.88, forecast: 6.49, mom: 18.6, yoy: 4,
+      target: 2.88, forecast: 3.54, mom: 18.6, yoy: 4,
       overridden: false,
     },
     {
       key: "mql", label: "Total MQLs", kind: "count", role: "volume",
-      target: 7875, forecast: 7425, mom: 2.3, yoy: 6.7,
+      target: 8450, forecast: 7425, mom: 2.3, yoy: 6.7,
       overridden: false,
       children: [
-        { key: "mql_ta",    label: "TA MQL",    kind: "count", target: 3846, forecast: 3960, mom: 5.1,  yoy: 9.7,  overridden: false },
-        { key: "mql_micro", label: "Micro MQL", kind: "count", target: 4029, forecast: 3025, mom: -3.1, yoy: 5.5,  overridden: false },
+        { key: "mql_ta",    label: "TA MQL",    kind: "count", target: 4095, forecast: 3960, mom: 5.1,  yoy: 9.7,  overridden: false },
+        { key: "mql_micro", label: "Micro MQL", kind: "count", target: 4355, forecast: 3025, mom: -3.1, yoy: 5.5,  overridden: false },
       ],
     },
     {
       key: "mql_sao", label: "MQL → SAO", kind: "rate", role: "conversion",
-      target: 30.0, forecast: 23.7, mom: -6.3, yoy: -14.1,
+      target: 35.86, forecast: 23.7, mom: -6.3, yoy: -14.1,
       overridden: false,
     },
     {
       key: "sao", label: "Total SAOs", kind: "count", role: "volume",
-      target: 2835, forecast: 1760, mom: -19.0, yoy: -39.3,
+      target: 3030, forecast: 1760, mom: -19.0, yoy: -39.3,
       overridden: false,
       children: [
-        { key: "sao_ta",    label: "TA SAO",    kind: "count", target: 1694, forecast: 946,  mom: -19.5, yoy: -46.8, overridden: false },
-        { key: "sao_micro", label: "Micro SAO", kind: "count", target: 1141, forecast: 605,  mom: -18.4, yoy: -27.5, overridden: false },
+        { key: "sao_ta",    label: "TA SAO",    kind: "count", target: 1689, forecast: 946,  mom: -19.5, yoy: -46.8, overridden: false },
+        { key: "sao_micro", label: "Micro SAO", kind: "count", target: 1341, forecast: 605,  mom: -18.4, yoy: -27.5, overridden: false },
       ],
     },
   ],
