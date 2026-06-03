@@ -81,12 +81,12 @@ window.REPORT = {
   metrics: [
     {
       key: "visits", label: "Marketable Visits", kind: "count", role: "volume",
-      target: 378943, forecast: 579960, mom: 9.1, yoy: -14,
+      target: 378943, forecast: 485736, mom: -4.1, yoy: 7.5,
       overridden: false,
     },
     {
       key: "cvr", label: "Website CVR", kind: "rate", role: "conversion",
-      target: 2.88, forecast: 3.54, mom: 18.6, yoy: 4,
+      target: 2.88, forecast: 3.05, mom: -44.0, yoy: -37.2,
       overridden: false,
     },
     {
