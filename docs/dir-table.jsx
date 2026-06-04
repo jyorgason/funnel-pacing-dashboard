@@ -103,19 +103,20 @@ function EditableCell({ value, kind, autoValue, onCommit, onRevert, fontSize, fo
       className="cell-editable"
       onClick={() => setActive(true)}
       title="Click to edit"
-      style={{ cursor: "text", display: "inline-flex", alignItems: "center", gap: 4,
+      style={{ cursor: "text", display: "inline-flex", alignItems: "center", gap: 3,
                fontSize, fontWeight, color }}
     >
       {formatted}
-      {isOverridden && (
-        <span
-          className="cell-revert"
-          title="Revert to auto"
-          onClick={(e) => { e.stopPropagation(); onRevert(); }}
-          style={{ width: 7, height: 7, borderRadius: "50%", background: "var(--primary-400)",
-                   display: "inline-block", flexShrink: 0, cursor: "pointer" }}
-        />
-      )}
+      <span
+        className="cell-revert"
+        title={isOverridden ? "Revert to auto" : ""}
+        onClick={isOverridden ? (e) => { e.stopPropagation(); onRevert(); } : (e) => e.stopPropagation()}
+        style={{
+          fontSize: 12, lineHeight: 1, userSelect: "none",
+          color: isOverridden ? "var(--primary-500)" : "var(--gray-3)",
+          cursor: isOverridden ? "pointer" : "default",
+        }}
+      >↺</span>
     </span>
   );
 }
