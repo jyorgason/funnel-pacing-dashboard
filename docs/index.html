@@ -25,6 +25,8 @@
   /* editable table cell affordances */
   .cell-editable { border-radius: 4px; padding: 1px 4px; margin: 0 -4px; transition: background .12s; }
   .cell-editable:hover { background: rgba(0,0,0,.04); }
+  .cell-revert { opacity: 0; transition: opacity .15s ease; }
+  .cell-editable:hover .cell-revert { opacity: 1; }
 
   @media print { .es-tools { display: none !important; } body { background: #fff; } }
 </style>
