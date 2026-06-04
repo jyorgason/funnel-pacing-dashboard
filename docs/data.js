@@ -62,7 +62,8 @@
    bdays_elapsed=3 (<5) → piecewise: last-month run rate
    May baseline: SAO=2,156 / MQL=8,547 / biz_days=20
    June total_bdays=22
-   YoY baseline (Jun 2025): SAO=3,025 / MQL=8,943 */
+   prior_month = May 2026 actuals · prior_year = Jun 2025 actuals (Databricks)
+   Adobe prior_month = May 2026 · prior_year = Jun 2025 (Historicals.csv) */
 
 window.REPORT = {
   period: "June 2026",
@@ -71,35 +72,40 @@ window.REPORT = {
   metrics: [
     {
       key: "visits", label: "Marketable Visits", kind: "count", role: "volume",
-      target: 378943, forecast: 485736, mom: -4.1, yoy: 7.5,
+      target: 378943, forecast: 485736,
+      prior_month: 506330, prior_year: 451829,
       overridden: false,
     },
     {
       key: "cvr", label: "Website CVR", kind: "rate", role: "conversion",
-      target: 2.88, forecast: 3.05, mom: -44.0, yoy: -37.2,
+      target: 2.88, forecast: 3.05,
+      prior_month: 5.45, prior_year: 4.854,
       overridden: false,
     },
     {
       key: "mql", label: "Total MQLs", kind: "count", role: "volume",
-      target: 7656, forecast: 9402, mom: 10.0, yoy: 5.1,
+      target: 7656, forecast: 9402,
+      prior_month: 8547, prior_year: 8939,
       overridden: false,
       children: [
-        { key: "mql_ta",    label: "TA MQL",    kind: "count", target: 3694, forecast: 5427, mom: 10.0, yoy: 23.4, overridden: false },
-        { key: "mql_micro", label: "Micro MQL", kind: "count", target: 3962, forecast: 3975, mom: 10.0, yoy: -12.5, overridden: false },
+        { key: "mql_ta",    label: "TA MQL",    kind: "count", target: 3694, forecast: 5427, prior_month: 4934, prior_year: 4395, overridden: false },
+        { key: "mql_micro", label: "Micro MQL", kind: "count", target: 3962, forecast: 3975, prior_month: 3613, prior_year: 4544, overridden: false },
       ],
     },
     {
       key: "mql_sao", label: "MQL → SAO", kind: "rate", role: "conversion",
-      target: 35.86, forecast: 25.23, mom: 0.0, yoy: -25.4,
+      target: 35.86, forecast: 25.23,
+      prior_month: 25.23, prior_year: 33.84,
       overridden: false,
     },
     {
       key: "sao", label: "Total SAOs", kind: "count", role: "volume",
-      target: 3030, forecast: 2372, mom: 10.0, yoy: -21.6,
+      target: 3030, forecast: 2372,
+      prior_month: 2156, prior_year: 3025,
       overridden: false,
       children: [
-        { key: "sao_ta",    label: "TA SAO",    kind: "count", target: 1689, forecast: 1416, mom: 10.0, yoy: -24.0, overridden: false },
-        { key: "sao_micro", label: "Micro SAO", kind: "count", target: 1341, forecast: 956,  mom: 10.0, yoy: -17.8, overridden: false },
+        { key: "sao_ta",    label: "TA SAO",    kind: "count", target: 1689, forecast: 1416, prior_month: 1287, prior_year: 1862, overridden: false },
+        { key: "sao_micro", label: "Micro SAO", kind: "count", target: 1341, forecast: 956,  prior_month: 869,  prior_year: 1163, overridden: false },
       ],
     },
   ],
